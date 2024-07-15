@@ -1,7 +1,7 @@
 # CKA-Preparation
 Préparation de la certification CKA 
 
-# Exam
+# Exam Certified Kubernetes Administrator (CKA) - V1.30
 
 Cluster Architecture, Installation & Configuration (25%)
 
