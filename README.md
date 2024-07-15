@@ -3,7 +3,7 @@ Préparation de la certification CKA
 
 # Exam Certified Kubernetes Administrator (CKA) - V1.30
 
-Tip: Use kubectl Cheatsheet during the exam https://kubernetes.io/docs/reference/kubectl/quick-reference/
+Tip: Use [kubectl Cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/) during the exam. You don't need to decorate everything.
 
 ## Cluster Architecture, Installation & Configuration (25%)
 
