@@ -156,6 +156,8 @@ etcd \
 systemctl start etcd
 ```
 
+# le nom d'OS
+uname -mov
 
 
 
