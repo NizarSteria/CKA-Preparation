@@ -1,5 +1,10 @@
 ## Run debug container
 
+### Calico Namespace
+```
+kubectl get pods -n calico-system -o wide
+```
+
 ### Default Namespace
 ```
 kubectl run -i --tty --rm debug --image=docker-remote.registry.saas.cagip.group.gca/busybox --restart=Never -- sh
