@@ -1,6 +1,21 @@
 ## Run debug container
 
-### Calico Namespace
+kubectl get pods -n kube-system
+kubectl get no -l ingress=true -owide
+kubectl get deploy -n kube-system kubi-deployment
+kubectl get pods -n kube-system | grep -i vault (vault)
+kubectl delete po prometheus-prometheus-kube-prometheus-prometheus-1 --force -n monitoring
+kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata.labels.heat,DC:.metadata.labels.failure-domain\.beta\.kubernetes\.io/zone,CDATE:.metadata.creationTimestamp,TAINTS:.spec.taints" | grep worker | wc -l
+
+## Linux
+htop
+ip a
+curl https://cd.hpr02.caas.lcl.gca -k -vv
+/root/.ssh/authorized_keys
+ssh-keygen -f "/root/.ssh/known_hosts" -R "XXX.19.113.133"
+ssh xxx.19.113.133
+ssh-add -l
+## Calico Namespace
 ```
 kubectl get pods -n calico-system -o wide
 ```
