@@ -9,11 +9,17 @@ kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata
 
 ## Linux
 htop
+
 ip a
+
 curl https://cd.hpr02.caas.lcl.gca -k -vv
+
 /root/.ssh/authorized_keys
+
 ssh-keygen -f "/root/.ssh/known_hosts" -R "XXX.19.113.133"
+
 ssh xxx.19.113.133
+
 ssh-add -l
 ## Calico Namespace
 ```
