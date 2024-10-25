@@ -9,10 +9,16 @@ kubectl get deploy -n kube-system kubi-deployment
 kubectl get pods -n kube-system | grep -i vault (vault)
 
 kubectl delete po prometheus-prometheus-kube-prometheus-prometheus-1 --force -n monitoring
+
 kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata.labels.heat,DC:.metadata.labels.failure-domain\.beta\.kubernetes\.io/zone,CDATE:.metadata.creationTimestamp,TAINTS:.spec.taints" | grep worker | wc -l
 
 ## all ns in worker
 kubectl get pods -A --field-selector spec.nodeName=worker-wrezog
+
+![image](https://github.com/user-attachments/assets/d96bc9a8-bee6-4ee2-8a1c-df017243acc3)
+
+https://kubernetes.io/docs/reference/kubectl/generated/
+
 
 ## Linux
 htop
