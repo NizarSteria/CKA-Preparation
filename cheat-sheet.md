@@ -15,6 +15,9 @@ kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata
 ## all ns in worker
 kubectl get pods -A --field-selector spec.nodeName=worker-wrezog
 
+[Tokens] Rotation des tokens Artifactory et Vault
+kubectl get pods -n kube-system | grep "vault\|arti"
+
 ![image](https://github.com/user-attachments/assets/d96bc9a8-bee6-4ee2-8a1c-df017243acc3)
 
 https://kubernetes.io/docs/reference/kubectl/generated/
