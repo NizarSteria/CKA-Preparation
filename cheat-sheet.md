@@ -15,6 +15,17 @@ kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata
 ## all ns in worker
 kubectl get pods -A --field-selector spec.nodeName=worker-wrezog
 
+- content: "OS_TENANT_NAME={{ os_tenant }} OS_PROJECT_NAME={{ os_tenant }} heat stack-create -e heats/{{ dns_admin_domain }}-heat-workers.yaml -f heats/heat-template-{{ platform }}-{{ stay_bi_sites is defined and (stay_bi_sites | bool) | ternary('bi','tri') }}.yaml {{ os }}-k8s-workers-{{ customer }}-{{ kubeVersion }}"
+    - content: "OS_TENANT_NAME={{ os_tenant }} OS_PROJECT_NAME={{ os_tenant }} heat stack-update -x -P worker_number=XX {{ os }}-k8s-workers-{{ customer }}-{{ kubeVersion }}"
+    - content: "kubectl cordon -l heat={{ os }}-k8s-workers-{{ customer }}-vXX"
+    - content: "kubectl get pods -A | grep 0/ | grep -v Completed"
+    - content: "kubectl drain --ignore-daemonsets --delete-emptydir-data --force --grace-period=0 -l failure-domain.beta.kubernetes.io/zone=diderot-az,heat={{ os }}-k8s-workers-{{ customer }}-vXX"
+    - content: "kubectl drain --ignore-daemonsets --delete-emptydir-data --force --grace-period=0 -l failure-domain.beta.kubernetes.io/zone=dalembert-az,heat={{ os }}-k8s-workers-{{ customer }}-vXX"
+    - content: "kubectl drain --ignore-daemonsets --delete-emptydir-data --force --grace-period=0 -l failure-domain.beta.kubernetes.io/zone=normandie2-az,heat={{ os }}-k8s-workers-{{ customer }}-vXX"
+      when: not (stay_bi_sites is defined and (stay_bi_sites | bool))
+    - content: "kubectl delete node -l heat={{ os }}-k8s-workers-{{ customer }}-vXX"
+  when: (item.when | default(True))| bool
+
 [Tokens] Rotation des tokens Artifactory et Vault
 kubectl get pods -n kube-system | grep "vault\|arti"
 
