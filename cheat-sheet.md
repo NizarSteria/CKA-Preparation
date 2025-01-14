@@ -12,6 +12,61 @@ kubectl delete po prometheus-prometheus-kube-prometheus-prometheus-1 --force -n 
 
 kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata.labels.heat,DC:.metadata.labels.failure-domain\.beta\.kubernetes\.io/zone,CDATE:.metadata.creationTimestamp,TAINTS:.spec.taints" | grep worker | wc -l
 
+Below are some key aliases (feel free to add more)
+#docker
+alias di="docker images"
+#kubectl
+alias kall="kubectl get all --all-namespaces"
+alias wkall="watch kubectl get all --all-namespaces"
+alias klogs="kubectl logs"
+alias kdesc="kubectl describe"
+alias kshow="kubectl get pods --show-labels"
+alias k="kubectl"
+#python venv
+alias act="source ./venv/bin/activate"
+#proxy ctlm test
+alias proxytest="openssl s_client -connect 127.0.0.1:3128"
+
+#start service docker, k3s, cntlm
+alias restartdocker="sudo systemctl daemon-reload; sudo systemctl start docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartdockerd="sudo systemctl daemon-reload; sudo systemctl start docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartk3s="sudo systemctl daemon-reload; sudo systemctl start k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartk="sudo systemctl daemon-reload; sudo systemctl start k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartproxy="sudo systemctl daemon-reload; sudo systemctl start cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+alias restartcntlm="sudo systemctl daemon-reload; sudo systemctl start cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+
+#stop service dockerd, k3s, cntlm
+alias restartdocker="sudo systemctl stop docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartdockerd="sudo systemctl stop docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartk3s="sudo systemctl stop k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartk="sudo systemctl stop k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartproxy="sudo systemctl stop cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+alias restartcntlm="sudo systemctl stop cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+
+#restart service dockerd, k3s, cntlm
+alias restartdocker="sudo systemctl daemon-reload; sudo systemctl restart docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartdockerd="sudo systemctl daemon-reload; sudo systemctl restart docker.service; journalctl --unit=docker.service -n 10 --no-pager";
+alias restartk3s="sudo systemctl daemon-reload; sudo systemctl restart k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartk="sudo systemctl daemon-reload; sudo systemctl restart k3s; journalctl --unit=k3s.service -n 10 --no-pager";
+alias restartproxy="sudo systemctl daemon-reload; sudo systemctl restart cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+alias restartcntlm="sudo systemctl daemon-reload; sudo systemctl restart cntlm; journalctl --unit=cntlm.service -n 10 --no-pager";
+
+#logs output dockerd, k3s, cntlm
+alias logsdocker="journalctl --unit=docker.service -n 50 --no-pager";
+alias logsdockerd="journalctl --unit=docker.service -n 50 --no-pager";
+alias logsk="journalctl --unit=k3s.service -n 50 --no-pager";
+alias logsk3s="journalctl --unit=k3s.service -n 50 --no-pager";
+alias logsproxy="journalctl --unit=cntlm.service -n 50 --no-pager";
+alias logscntlm="journalctl --unit=cntlm.service -n 50 --no-pager";
+alias logdocker="journalctl --unit=docker.service -n 50 --no-pager";
+alias logdockerd="journalctl --unit=docker.service -n 50 --no-pager";
+alias logk="journalctl --unit=k3s.service -n 50 --no-pager";
+alias logk3s="journalctl --unit=k3s.service -n 50 --no-pager";
+alias logproxy="journalctl --unit=cntlm.service -n 50 --no-pager";
+alias logcntlm="journalctl --unit=cntlm.service -n 50 --no-pager";
+
+
+
 ## all ns in worker
 kubectl get pods -A --field-selector spec.nodeName=worker-wrezog
 
