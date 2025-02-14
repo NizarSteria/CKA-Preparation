@@ -1,0 +1,27 @@
+Installation de CNTLM
+CNTLM est un proxy d'authentification. Il sera lancé en tant que service sur la machine, afin de pouvoir sortir du vlan bureautique.
+
+Donc dans un premier temps, cntlm doit être installé à partir d'un rpm/deb copié localement sur la machine avec une clé usb. (Regardez s'il n'est pas déjà installé sur votre image de base avant tout)
+
+1 https://sourceforge.net/projects/cntlm/files/latest/download
+
+demander les mots de passe pour un domaine et un utilisateur donné
+1
+
+cntlm -H -d zoe.gca -u uxxxx
+
+A l'invite, renseigner le mot de passe AD de votre compte.
+
+la commande génère le hash pour LM, et NTLMv2 NT comme suit:
+
+
+PassLM          ZZZ
+PassNT          YYY
+PassNTLMv2      XXX
+
+modifier le fichier de configuration principal /etc/cntlm.conf
+
+  relancer cntlm
+systemctl enable cntlm
+systemctl restart cntlm
+
