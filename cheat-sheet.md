@@ -1,5 +1,7 @@
 ## Run debug container
 
+kubectl get nodes -L heat,topology.kubernetes.io/zone (la stack et la zone)
+
 kubectl get nodes -l heat -o custom-columns="NAME:.metadata.name,STACK:.metadata.labels.heat,STATUS:status.conditions[4].type,DC:.metadata.labels.topology\.kubernetes\.io/zone,CPU:.status.capacity.cpu,RAM:.status.capacity.memory,CDATE:.metadata.creationTimestamp,TAINTS:.spec.taints" --sort-by=.metadata.labels.heat
 
 kubectl get pods -n kube-system
